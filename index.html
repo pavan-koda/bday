@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Sarvani!</title>
+    <style>
+        body {
+            background: #fce6f4;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
+        h1 {
+            color: #ff6f61;
+            font-size: 4em;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+            transition: text-shadow 0.3s ease-in-out;
+        }
+        h1:hover {
+            text-shadow: 3px 3px 8px rgba(255, 105, 180, 0.7);
+        }
+        h2 {
+            font-size: 2.5em;
+            color: #ff8c00;
+            margin-top: -10px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            animation: fadeIn 3s forwards 0.5s;
+        }
+        .balloons {
+            font-size: 3em;
+            color: #ff4b5c;
+            margin: 20px 0;
+            position: absolute;
+            animation: floatBalloons 5s infinite linear;
+        }
+        .message {
+            font-size: 1.5em;
+            color: #e4a9b7;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+            margin: 30px auto;
+            width: 80%;
+            max-width: 600px;
+            line-height: 1.5;
+            opacity: 0;
+            animation: fadeIn 2s forwards 1s;
+            animation: flashLights 1.5s alternate infinite;
+        }
+        .cake {
+            font-size: 3em;
+            color: #ffbb00;
+            opacity: 0;
+            animation: cakePop 2s forwards 1.5s;
+        }
+        .footer {
+            margin-top: 50px;
+            font-size: 1.2em;
+            color: #a6a6a6;
+        }
+        .footer a {
+            color: #ff6f61;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Confetti animation */
+        @keyframes confetti {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+
+        /* Floating balloons animation */
+        @keyframes floatBalloons {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(100vw); }
+            50% { transform: translateX(0); }
+            75% { transform: translateX(-100vw); }
+            100% { transform: translateX(0); }
+        }
+
+        /* Fade-in text effect */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Flash lights effect on message box */
+        @keyframes flashLights {
+            0% { background-color: #fff; }
+            50% { background-color: #ffeb3b; }
+            100% { background-color: #fff; }
+        }
+
+        /* Cake popping effect */
+        @keyframes cakePop {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Confetti container -->
+    <div id="confetti-container"></div>
+
+    <h1>🎉 Happy Birthday, Sarvani! 🎉</h1>
+    <h2>Wishing you a day filled with joy, love, and unforgettable memories! 🎂</h2>
+    
+    <div class="balloons" style="top: 20px; left: 10%; animation-duration: 4s;">🎈</div>
+    <div class="balloons" style="top: 30px; left: 30%; animation-duration: 5s;">🎈</div>
+    <div class="balloons" style="top: 50px; left: 50%; animation-duration: 6s;">🎈</div>
+    <div class="balloons" style="top: 70px; left: 70%; animation-duration: 7s;">🎈</div>
+    
+    <div class="message">
+        <p>Dear Sarvani,</p>
+        <p>May your birthday be as bright and beautiful as you are! I hope this year brings you nothing but happiness, success, and all the dreams you've been working towards. You're a truly special person, and I’m so lucky to know you!</p>
+        <p>Here's to another fantastic year of laughter, adventures, and endless smiles. Cheers to you, Sarvani! 🥂</p>
+    </div>
+    
+    <div class="cake">🎂 🎉 🎂</div>
+    
+    <div class="footer">
+        <p>With lots of love,</p>
+        <p><a href="mailto:sarvani@example.com">Your Friend</a></p>
+    </div>
+
+    <!-- Confetti Script -->
+    <script>
+        // Create confetti effect
+        function createConfetti() {
+            const container = document.getElementById('confetti-container');
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = `${Math.random() * 100}vw`;
+                confetti.style.animation = `confetti ${Math.random() * 2 + 2}s infinite linear`;
+                container.appendChild(confetti);
+            }
+        }
+
+        createConfetti();
+    </script>
+
+    <style>
+        #confetti-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .confetti {
+            position: absolute;
+            top: -10px;
+            width: 10px;
+            height: 10px;
+            background-color: #ff6f61;
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+    </style>
+
+</body>
+</html>
