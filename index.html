@@ -3,174 +3,400 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Dileep!</title>
+    <title>Design Automation Application</title>
     <style>
         body {
-            background: #fce6f4;
-            font-family: 'Arial', sans-serif;
-            text-align: center;
-            padding: 50px;
+            font-family: Arial, sans-serif;
             margin: 0;
-            overflow: hidden;
-            position: relative;
+            padding: 0;
+            background-color: #f2f2f2;
         }
-        h1 {
-            color: #ff6f61;
-            font-size: 4em;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-            opacity: 0;
-            animation: fadeIn 2s forwards;
-            transition: text-shadow 0.3s ease-in-out;
-        }
-        h1:hover {
-            text-shadow: 3px 3px 8px rgba(255, 105, 180, 0.7);
-        }
-        h2 {
-            font-size: 2.5em;
-            color: #ff8c00;
-            margin-top: -10px;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
-            opacity: 0;
-            animation: fadeIn 3s forwards 0.5s;
-        }
-        .balloons {
-            font-size: 3em;
-            color: #ff4b5c;
-            margin: 20px 0;
-            position: absolute;
-            animation: floatBalloons 5s infinite linear;
-        }
-        .message {
-            font-size: 1.5em;
-            color: #e4a9b7;
-            background-color: #fff;
+
+        .container {
+            width: 1200px;
+            height: 800px;
+            margin: 50px auto;
+            border: 2px solid #009FE3;
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-            margin: 30px auto;
-            width: 80%;
-            max-width: 600px;
-            line-height: 1.5;
-            opacity: 0;
-            animation: fadeIn 2s forwards 1s;
-            animation: flashLights 1.5s alternate infinite;
+            background-color: white;
+            overflow-y: auto;
         }
-        .cake {
-            font-size: 3em;
-            color: #ffbb00;
-            opacity: 0;
-            animation: cakePop 2s forwards 1.5s;
-        }
-        .footer {
-            margin-top: 50px;
-            font-size: 1.2em;
-            color: #a6a6a6;
-        }
-        .footer a {
-            color: #ff6f61;
-            text-decoration: none;
+
+        .header {
+            background-color: #009FE3;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            font-size: 24px;
             font-weight: bold;
+            margin-bottom: 20px;
         }
 
-        /* Confetti animation */
-        @keyframes confetti {
-            0% { transform: translateY(0); opacity: 1; }
-            100% { transform: translateY(100vh); opacity: 0; }
+        .table-container {
+            width: 100%;
+            height: auto;
+            overflow-x: auto;
+            margin-bottom: 20px;
         }
 
-        /* Floating balloons animation */
-        @keyframes floatBalloons {
-            0% { transform: translateX(0); }
-            25% { transform: translateX(100vw); }
-            50% { transform: translateX(0); }
-            75% { transform: translateX(-100vw); }
-            100% { transform: translateX(0); }
+        table {
+            width: 100%;
+            border-collapse: collapse;
         }
 
-        /* Fade-in text effect */
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
         }
 
-        /* Flash lights effect on message box */
-        @keyframes flashLights {
-            0% { background-color: #fff; }
-            50% { background-color: #ffeb3b; }
-            100% { background-color: #fff; }
+        th {
+            background-color: #009FE3;
+            color: white;
+            font-size: 16px;
         }
 
-        /* Cake popping effect */
-        @keyframes cakePop {
-            0% { transform: scale(0); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
         }
 
+        /* Edit mode */
+        td[contenteditable="true"]:empty:before {
+            content: "Click to Edit";
+            color: #888;
+        }
+
+        /* Style for the delete button */
+        .delete-btn {
+            background-color: rgb(255, 255, 255);
+            color: rgb(0, 0, 0);
+            border: solid;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 12px;
+            border-radius: 5px;
+        }
+
+        .save-btn {
+            background-color: rgb(255, 255, 255);
+            color: rgb(0, 0, 0);
+            border: solid;
+            border-color: #333;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            margin-top: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Styling for footer */
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-size: 12px;
+            margin-top: 20px;
+        }
+
+        .footer img {
+            height: 40px;
+        }
+        .table-heading {
+            font-size: 18px;
+            font-weight: bold;
+            text-align: left;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
-    <!-- Confetti container -->
-    <div id="confetti-container"></div>
 
-    <h1>🎉 Happy Birthday, Dileep! 🎉</h1>
-    <h2>Wishing you a day filled with joy, love, and unforgettable memories! 🎂</h2>
-    
-    <div class="balloons" style="top: 20px; left: 10%; animation-duration: 4s;">🎈</div>
-    <div class="balloons" style="top: 30px; left: 30%; animation-duration: 5s;">🎈</div>
-    <div class="balloons" style="top: 50px; left: 50%; animation-duration: 6s;">🎈</div>
-    <div class="balloons" style="top: 70px; left: 70%; animation-duration: 7s;">🎈</div>
-    
-    <div class="message">
-        <p>Dear Sarvani,</p>
-        <p>May your birthday be as bright and beautiful as you are! I hope this year brings you nothing but happiness, success, and all the dreams you've been working towards. You're a truly special person, and I’m so lucky to know you!</p>
-        <p>Here's to another fantastic year of laughter, adventures, and endless smiles. Cheers to you, Sarvani! 🥂</p>
-    </div>
-    
-    <div class="cake">🎂 🎉 🎂</div>
-    
-    <div class="footer">
-        <p>With lots of love,</p>
-        <p><a href="mailto:sarvani@example.com">Your Friend</a></p>
+    <!-- Container holding all tables -->
+    <div class="container">
+        <!-- Header -->
+      
+
+        <!-- Table 1 -->
+        <div class="table-container">
+            <div class="table-heading">Frontfork</div>
+
+            <table id="table1">
+                <thead>
+                    <tr>
+                        <th>TYP_OT_PART_NAME</th>
+                        <th>TYP_LIMB_SIDE</th>
+                        <th>TYP_BRAKE_LIMB</th>
+                        <th>TYP_BRAKE_LH_LIMB</th>
+                        <th>TYP_BRAKE_RH_LIMB</th>
+                        <th>TYP_BRAKE_TYPE</th>
+                        <th>TYP_OUTER_TUBE_SF</th>
+                        <th>TYP_OUTER_TUBE_DUBUSH</th>
+                        <th>TYP_INNER_TUBE_SLIDERBUSH</th>
+                        <th>DIM_OT_INNER_DIA</th>
+                        <th>DIM_OT_TOTAL_LENGTH</th>
+                        <th>DIM_DIST_OT_TOP_AXLE</th>
+                        <th>DIM_DIST_AXLE_BOTTOM</th>
+                        <th>DIM_L_BTAL</th>
+                        <th>DIM_OT_WORKING_LENGTH</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td contenteditable="true">RFQ_OT_0001</td>
+                        <td contenteditable="true">LH</td>
+                        <td contenteditable="true">No</td>
+                        <td contenteditable="true">No</td>
+                        <td contenteditable="true">Yes</td>
+                        <td contenteditable="true">Disc</td>
+                        <td contenteditable="true">BRIGHT SILVER</td>
+                        <td contenteditable="true">Yes</td>
+                        <td contenteditable="true">No</td>
+                        <td contenteditable="true">30</td>
+                        <td contenteditable="true">321</td>
+                        <td contenteditable="true">299</td>
+                        <td contenteditable="true">22</td>
+                        <td contenteditable="true">26.5</td>
+                        <td contenteditable="true">272.5</td>
+                        <td><button class="delete-btn" onclick="deleteRow(this)">Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Table 2 -->
+        <div class="table-container">
+            <div class="table-heading">Spring</div>
+
+            <table id="table2">
+                <thead>
+                    <tr>
+                        <th>TYP_BC_ASSY_PART_NAME</th>
+                        <th>TYP_BC_PART_NAME</th>
+                        <th>TYP_BC_MC_PART_NAME</th>
+                        <th>TYP_BC_ORING_PART_NAME</th>
+                        <th>TYP_BOLTCAP_TYPE</th>
+                        <th>TYP_BOLTCAP_SF</th>
+                        <th>TYP_BOLTCAP_CR</th>
+                        <th>TYP_BOLTCAP_DESIGN</th>
+                        <th>DIM_BC_TOTAL_HEIGHT</th>
+                        <th>DIM_BC_PROJECTED_HEIGHT</th>
+                        <th>DIM_BC_TH_HEIGHT</th>
+                        <th>DIM_BC_IT_CONTACT</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td contenteditable="true">RFQ_BC_0001</td>
+                        <td contenteditable="true">51060093-2</td>
+                        <td contenteditable="true">51060091</td>
+                        <td contenteditable="true">5013011</td>
+                        <td contenteditable="true">Threaded</td>
+                        <td contenteditable="true">EpFeZn8 B</td>
+                        <td contenteditable="true">Not Specified</td>
+                        <td contenteditable="true">Circular head + M10 Hole</td>
+                        <td contenteditable="true">27</td>
+                        <td contenteditable="true">0</td>
+                        <td contenteditable="true">4.5</td>
+                        <td contenteditable="true">22.5</td>
+                        <td><button class="delete-btn" onclick="deleteRow(this)">Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Table 3 -->
+        <div class="table-container">
+            <div class="table-heading">InnerTube</div>
+
+            <table id="table3">
+                <thead>
+                    <tr>
+                        <th>TYP_SPRING1_PART_NAME</th>
+                        <th>DIM_WIRE_DIA</th>
+                        <th>DIM_TOP_TIP_THICKNESS</th>
+                        <th>DIM_BT_TIP_THICKNESS</th>
+                        <th>DIM_MEAN_DIA_MID</th>
+                        <th>DIM_MEAN_DIA_BT</th>
+                        <th>DIM_MEAN_DIA_TOP</th>
+                        <th>Total coils</th>
+                        <th>Active coils</th>
+                        <th>DIM_TCOILS_TOP_QTY</th>
+                        <th>DIM_TCOILS_BT_QTY</th>
+                        <th>DIM_SPRING1_FREE_LENGTH</th>
+                        <th>DIM_SPRING1_SOLID_LENGTH</th>
+                        <th>DIM_SPRING1_WORKING_LENGTH</th>
+                        <th>DIM_TOTAL_TURNS_QTY</th>
+                        <th>DIM_ACOILS_K1_QTY</th>
+                        <th>DIM_ACOILS_K2_QTY</th>
+                        <th>DIM_L_EFFECTIVE_K1</th>
+                        <th>DIM_L_EFFECTIVE_K2</th>
+                        <th>TYP_SPRING1_RATING</th>
+                        <th>DIM_SPRING1_RATING_K1</th>
+                        <th>DIM_SPRING1_RATING_K2</th>
+                        <th>DIM_SPRING1_RATING_K3</th>
+                        <th>DIM_COP1</th>
+                        <th>DIM_COP2</th>
+                        <th>DIM_P1 (N)</th>
+                        <th>DIM_P2 (N)</th>
+                        <th>DIM_P3 (N)</th>
+                        <th>DIM_D1 (mm)</th>
+                        <th>DIM_D2 (mm)</th>
+                        <th>DIM_D3 (mm)</th>
+                        <th>Fmax load (N)</th>
+                        <th>σmax (N/mm2)</th>
+                        <th>Stress ratio</th>
+                        <th>Material</th>
+                        <th>UTS (N/mm2)</th>
+                        <th>SHOT PEENING </th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td contenteditable="true">RFQ_SP_0001</td>
+                        <td contenteditable="true">3.6</td>
+                        <td contenteditable="true">0.9</td>
+                        <td contenteditable="true">0.9</td>
+                        <td contenteditable="true">23</td>
+                        <td contenteditable="true">21</td>
+                        <td contenteditable="true">23</td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true">70.2</td>
+                        <td contenteditable="true">2</td>
+                        <td contenteditable="true">2</td>
+                        <td contenteditable="true">415</td>
+                        <td contenteditable="true">260.67</td>
+                        <td contenteditable="true">144.33</td>
+                        <td contenteditable="true">72.41</td>
+                        <td contenteditable="true">31.17</td>
+                        <td contenteditable="true">0</td>
+                        <td contenteditable="true">142.84</td>
+                        <td contenteditable="true">0</td>
+                        <td contenteditable="true">Dual</td>
+                        <td contenteditable="true">3.33</td>
+                        <td contenteditable="true">5.98</td>
+                        <td contenteditable="true">0</td>
+                        <td contenteditable="true">69</td>
+                        <td contenteditable="true">0</td>
+                        <td contenteditable="true">230.14</td>
+                        <td contenteditable="true">698.07</td>
+                        <td contenteditable="true">0</td>
+                        <td contenteditable="true">69</td>
+                        <td contenteditable="true">147.2</td>
+                        <td contenteditable="true">0</td>
+                        <td contenteditable="true">698.07</td>
+                        <td contenteditable="true">949.8</td>
+                        <td contenteditable="true">53.60%</td>
+                        <td contenteditable="true">IS4454 - SH</td>
+                        <td contenteditable="true">1770</td>
+                        <td contenteditable="true">Yes</td>
+                        <td><button class="delete-btn" onclick="deleteRow(this)">Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="table-container">
+            <div class="table-heading">Piston</div>
+            <table id="table4">
+                <thead>
+                    <tr>
+                        <th>TYP_IT_ASSY_PART_NAME</th>
+                        <th>TYP_IT_MC_PART_NAME</th>
+                        <th>DIM_L_INNER_TUBE_ASSY</th>
+                        <th>DIM_L_INNER_TUBE_STEP</th>
+                        <th>TYP_IT_HOLE</th>
+                        <th>DIM_IT_HOLE_DIA</th>
+                        <th>DIM_IT_HOLE_QTY</th>
+                        <th>DIM_DIST_HOLE_BT</th>
+                        <th>TYP_UND_BR_GR</th>
+                        <th>DIM_UND_BR_GR_DIA</th>
+                        <th>DIM_UND_BR_GR_DIST_TOP</th>
+                        <th>TYP_BOLTCAP_TYPE</th>
+                        <th>TYP_SPACER_OIL_LOCK</th>
+                        <th>TYP_GUIDE_SPRING</th>
+                        <th>TYP_SPRING_WAVE_WASHER</th>
+                        <th>TYP_SPRING_SEAT_LOWER</th>
+                        <th>TYP_VALVE_SEAT</th>
+                        <th>TYP_FLOATING_VALVE</th>
+                        <th>TYP_METERING_VALVE</th>
+                        <th>TYP_INNER_TUBE_SLIDERBUSH</th>
+                        <th>TYP_INDUCTION_HARDENING</th>
+                        <th>TYP_NOISE_REDUCTION</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td contenteditable="true">RFQ_IT_001</td>
+                        <td contenteditable="true">55050148-4</td>
+                        <td contenteditable="true">551</td>
+                        <td contenteditable="true">46</td>
+                        <td contenteditable="true">Yes</td>
+                        <td contenteditable="true">2</td>
+                        <td contenteditable="true">1</td>
+                        <td contenteditable="true">50</td>
+                        <td contenteditable="true">No</td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true">Threaded</td>
+                        <td contenteditable="true">Yes / Any</td>
+                        <td contenteditable="true">Yes / Any</td>
+                        <td contenteditable="true">5520011</td>
+                        <td contenteditable="true">Yes / Any</td>
+                        <td contenteditable="true">No</td>
+                        <td contenteditable="true">No</td>
+                        <td contenteditable="true">No</td>
+                        <td contenteditable="true">No</td>
+                        <td contenteditable="true">NNR</td>
+                        <td><button class="delete-btn" onclick="deleteRow(this)">Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        
+
+        <!-- Save Button for all tables -->
+        <button class="save-btn" onclick="saveAllTables()">Save All Changes</button>
+
+      
     </div>
 
-    <!-- Confetti Script -->
     <script>
-        // Create confetti effect
-        function createConfetti() {
-            const container = document.getElementById('confetti-container');
-            for (let i = 0; i < 100; i++) {
-                const confetti = document.createElement('div');
-                confetti.classList.add('confetti');
-                confetti.style.left = `${Math.random() * 100}vw`;
-                confetti.style.animation = `confetti ${Math.random() * 2 + 2}s infinite linear`;
-                container.appendChild(confetti);
-            }
+        // Function to delete a row
+        function deleteRow(button) {
+            var row = button.closest('tr');
+            row.remove();
         }
 
-        createConfetti();
+        // Function to save changes in all tables
+        function saveAllTables() {
+            var tables = document.querySelectorAll('table');
+            tables.forEach(function(table) {
+                var rows = table.getElementsByTagName('tr');
+                var tableData = [];
+                
+                // Loop through each row (excluding header row)
+                for (var i = 1; i < rows.length; i++) {
+                    var cells = rows[i].getElementsByTagName('td');
+                    var rowData = [];
+                    for (var j = 0; j < cells.length - 1; j++) { // Exclude the "Action" column
+                        rowData.push(cells[j].innerText);
+                    }
+                    tableData.push(rowData);
+                }
+                console.log('Saved Data for table ' + table.id + ':', tableData);
+            });
+            alert('All changes have been saved!');
+        }
     </script>
-
-    <style>
-        #confetti-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            pointer-events: none;
-            z-index: 999;
-        }
-
-        .confetti {
-            position: absolute;
-            top: -10px;
-            width: 10px;
-            height: 10px;
-            background-color: #ff6f61;
-            border-radius: 50%;
-            opacity: 0.8;
-        }
-    </style>
 
 </body>
 </html>
